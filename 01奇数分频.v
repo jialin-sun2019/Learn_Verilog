@@ -20,7 +20,7 @@ module Counts(rst_n,clk,out_clk);
 	always@(posedge clk) begin
 		if(rst_n)
 			c_out1 <= 1'b0;
-		else if(rst_n < (M-1)/2) //
+		else if(cnts_1 < (M-1)/2) //
 			c_out1 <= 1'b1;
 		else
 			c_out1 <= 1'b0;
@@ -29,7 +29,7 @@ module Counts(rst_n,clk,out_clk);
 	always@(negedge clk) begin
 		if(rst_n)
 			cnts_2 <= 3'b0;
-		else if(cnts_1 == M-1)  //分频数  -  1
+		else if(cnts_2 == M-1)  //分频数  -  1
 			cnts_2 <= 3'b0;
 		else
 			cnts_2 <= cnts_2 + 3'b1;
@@ -38,7 +38,7 @@ module Counts(rst_n,clk,out_clk);
 	always@(negedge clk) begin
 		if(rst_n)
 			c_out2 <= 1'b0;
-		else if(rst_n < (M-1)/2) //
+		else if(cnts_2 < (M-1)/2) //
 			c_out2 <= 1'b1;
 		else
 			c_out2 <= 1'b0;
